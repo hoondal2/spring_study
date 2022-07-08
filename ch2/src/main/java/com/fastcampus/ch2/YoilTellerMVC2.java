@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class YoilTellerMVC {
+public class YoilTellerMVC2 {
 	public String catcher(Exception ex) {
 		ex.printStackTrace();
 		
@@ -17,7 +17,7 @@ public class YoilTellerMVC {
 	}
 	
 	// 년월일을 입력하면 요일을 알려주는 프로그램
-	@RequestMapping("/getYoilMVC")
+	@RequestMapping("/getYoilMVC2")
 	//public static void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		public String main(@RequestParam(required=true) int year,@RequestParam(required=true)  int month,@RequestParam(required=true)  int day, Model model) throws IOException { // view를 따로 분리했기 떄문에 response는 필요치 않다.
 		// 1. 입력 => 파라미터로 처리 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class YoilTellerMVC {
+public class YoilTellerMVC4 {
 	public String catcher(Exception ex) {
 		ex.printStackTrace();
 		
@@ -17,9 +17,9 @@ public class YoilTellerMVC {
 	}
 	
 	// 년월일을 입력하면 요일을 알려주는 프로그램
-	@RequestMapping("/getYoilMVC")
+	@RequestMapping("/getYoilMVC4")
 	//public static void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		public String main(@RequestParam(required=true) int year,@RequestParam(required=true)  int month,@RequestParam(required=true)  int day, Model model) throws IOException { // view를 따로 분리했기 떄문에 response는 필요치 않다.
+		public String main(@RequestParam MyDate date, Model model) throws IOException { // view를 따로 분리했기 떄문에 response는 필요치 않다.
 		// 1. 입력 => 파라미터로 처리 
 //		String year = request.getParameter("year");
 //		String month = request.getParameter("month");
@@ -31,17 +31,15 @@ public class YoilTellerMVC {
 		
 		// 2. 작업
 			// 1. 유효성 검사
-			if(!isValid(year, month, day)) {
+			if(!isValid(date)) {
 				return "yoilError";
 			}
 			
 			// 2. 요일 계산
-			char yoil = getYoil(year, month, day);
+			char yoil = getYoil(date);
 		
 			// 3. 계산한 결과를 model에 저장
-			model.addAttribute("year", year);
-			model.addAttribute("month", month);
-			model.addAttribute("day", day);
+			model.addAttribute("myDate", date);
 			model.addAttribute("yoil", yoil);
 			
 		return "yoil"; // /WEB-INF/views/yoil.jsp
@@ -55,8 +53,17 @@ public class YoilTellerMVC {
 		
 	}
 
-	private boolean isValid(int year, int month, int day) {
+	private boolean isValid(MyDate date) {
 		// TODO Auto-generated method stub
+		return isValid(date.getYear(), date.getMonth(), date.getDay());
+	}
+
+	private char getYoil(MyDate date) {
+		// TODO Auto-generated method stub
+		return getYoil(date.getYear(), date.getMonth(), date.getDay());
+	}
+
+	private boolean isValid(int year, int month, int day) {
 		return true;
 	}
 

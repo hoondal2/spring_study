@@ -15,10 +15,10 @@ public class MethodInfo {
 		Method[] methodArr = clazz.getDeclaredMethods();
 		
 		for(Method m : methodArr) {
-			String name = m.getName();
-			Parameter[] paramArr = m.getParameters();
+			String name = m.getName(); // 메서드의 이름
+			Parameter[] paramArr = m.getParameters(); // 매개변수 목록
 //			Class[] paramTypeArr = m.getParameterTypes();
-			Class returnType = m.getReturnType();
+			Class returnType = m.getReturnType(); // 반환 타입
 			
 			StringJoiner paramList = new StringJoiner(", ", "(", ")");
 			
