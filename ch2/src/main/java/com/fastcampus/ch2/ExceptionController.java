@@ -1,16 +1,19 @@
 package com.fastcampus.ch2;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-public class ExceptionController {
+public class ExceptionController {	
 	
 		@ExceptionHandler(Exception.class)
+		@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)  // 200 -> 500에러로 바꿈
 		public String catcher(Exception ex, Model m) {
-			m.addAttribute("ex",ex);
+			//m.addAttribute("ex",ex);
 			return "error";
 		}
 		
